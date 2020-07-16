@@ -84,8 +84,10 @@ struct NotFound end
 
 const NOT_FOUND = NotFound()
 
-const CompilerTypes = Union{Type, MaybeUndef, Const, Conditional, NotFound, PartialStruct}
-==(x::CompilerTypes, y::CompilerTypes) = x === y
+const CompilerTypes = Union{MaybeUndef, Const, Conditional, NotFound, PartialStruct}
+==(x::CompilerTypes, y::CompilerTypes) = false
+==(x::Type, y::CompilerTypes) = false
+==(x::CompilerTypes, y::Type) = false
 
 #################
 # lattice logic #
