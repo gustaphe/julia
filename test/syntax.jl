@@ -2292,3 +2292,6 @@ end
 
     @test (Int .<: [Integer] .<: [Real]) == [true]
 end
+
+@test :(a <-- b <-- c) == Expr(:call, :<--, :a, Expr(:call, :<--, :b, :c))
+@test :(a<-->b<-->c) == Expr(:call, :<-->, :a, Expr(:call, :<-->, :b, :c))
